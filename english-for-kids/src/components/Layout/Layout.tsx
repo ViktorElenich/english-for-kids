@@ -6,11 +6,10 @@ import Main from '../Main/Main';
 const Layout: FC = () => {
   return (
     <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
+      sx={{ 
         height: '100vh',
-        rowGap: 2,
+        maxWidth: '1920px',
+        width: '100%'
       }}
     >
       <SideBar />

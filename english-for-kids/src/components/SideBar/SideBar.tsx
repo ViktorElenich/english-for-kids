@@ -14,22 +14,13 @@ import Drawer from '@mui/material/Drawer';
 import Link from '@mui/material/Link';
 import Switch from '@mui/material/Switch';
 import './SideBar.scss';
-import { RouteEnum } from '../../enums/enums';
+import {  navigationLinks } from "../../const/const";
 
-const navigationLinks = [
-  {name: 'Main Page', href: RouteEnum.Main},
-  {name: 'Animals 1', href: RouteEnum.Animals1},
-  {name: 'Animals 2', href: RouteEnum.Animals2},
-  {name: 'Animals 3', href: RouteEnum.Animals3},
-  {name: 'Food 1', href: RouteEnum.Food1},
-  {name: 'Food 2', href: RouteEnum.Food2},
-  {name: 'Emotions', href: RouteEnum.Emotions},
-  {name: 'Places', href: RouteEnum.Places},
-];
+
 
 const styles = {
   bg: 'linear-gradient(111.84deg, rgba(6, 11, 38, 0.94) 59.3%, rgba(26, 31, 55, 0) 100%)',
-}
+};
 
 const drawerWidth = 240;
 
@@ -52,33 +43,25 @@ const SideBar: FC<Props> = ({ window }) => {
 
   const drawer = (
     <Box>
-      <Toolbar sx={{ justifyContent: 'flex-end'}}>
-        <Typography component="div" sx={{ color: '#fff'}}>{ switchInput ? 'Train' : 'Play'}</Typography>
-      <Switch color="primary" checked={switchInput} onChange={handleSwitchInput} />
-      </Toolbar>
-        <List>
-          {navigationLinks.map((item, index) => (
-            <Link
-              key={index}
-              href={item.href}
-              variant='button'
-              underline='none'
-              color='#fff'
-            >
-              <ListItem>
-                <Button sx={{
-                    background: '#1A1F37',
-                    textAlign: 'center',
-                    borderRadius: 5,
-                    width: '100%'
-                    }}
-                    variant="outlined"
-                    >
-                  <ListItemText primary={item.name} />
-                </Button>
-              </ListItem>
-            </Link>
-          ))}
+
+      <List>
+        {navigationLinks.map((item, index) => (
+          <Link key={index} href={item.href} variant="button" underline="none" color="#fff">
+            <ListItem>
+              <Button
+                sx={{
+                  background: '#1A1F37',
+                  textAlign: 'center',
+                  borderRadius: 5,
+                  width: '100%',
+                }}
+                variant="outlined"
+              >
+                <ListItemText primary={item.name} />
+              </Button>
+            </ListItem>
+          </Link>
+        ))}
       </List>
     </Box>
   );
@@ -91,10 +74,14 @@ const SideBar: FC<Props> = ({ window }) => {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          background: 'transparent'
+          background: 'transparent',
+          boxShadow: 0,
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{
+            display: 'flex',
+            justifyContent: 'space-between'
+        }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -104,9 +91,15 @@ const SideBar: FC<Props> = ({ window }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ pl: 10}}>
+          <Typography variant="h6" noWrap component="div" sx={{ pl: '10px' }}>
             English For Kids
           </Typography>
+            <Toolbar sx={{ justifyContent: 'flex-end' }}>
+                <Typography component="div" sx={{ color: '#fff' }}>
+                    {switchInput ? 'Train' : 'Play'}
+                </Typography>
+                <Switch color="primary" checked={switchInput} onChange={handleSwitchInput} />
+            </Toolbar>
         </Toolbar>
       </AppBar>
       <Box
@@ -124,7 +117,11 @@ const SideBar: FC<Props> = ({ window }) => {
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: styles.bg },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth,
+              background: styles.bg,
+            },
           }}
         >
           {drawer}
@@ -133,7 +130,7 @@ const SideBar: FC<Props> = ({ window }) => {
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { 
+            '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
               background: styles.bg,
@@ -141,7 +138,7 @@ const SideBar: FC<Props> = ({ window }) => {
               margin: '16px 0px 16px 16px',
               borderRadius: '16px',
               height: 'calc(100% - 32px)',
-              borderRight: 0
+              borderRight: 0,
             },
           }}
           open
@@ -150,7 +147,7 @@ const SideBar: FC<Props> = ({ window }) => {
         </Drawer>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export default SideBar;
