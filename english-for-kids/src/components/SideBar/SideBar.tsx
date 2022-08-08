@@ -46,7 +46,13 @@ const SideBar: FC<Props> = ({ window }) => {
 
       <List>
         {navigationLinks.map((item, index) => (
-          <Link key={index} href={item.href} variant="button" underline="none" color="#fff">
+          <Link
+              key={index}
+              href={item.href}
+              variant="button"
+              underline="none"
+              color="#fff"
+          >
             <ListItem>
               <Button
                 sx={{

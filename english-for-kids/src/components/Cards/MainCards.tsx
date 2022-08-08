@@ -4,24 +4,26 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 interface Props {
   image: string;
   name: string;
-  key: number
+  key: number;
 }
 
 const MainCards: FC<Props> = ({ image, name }) => {
+  // @ts-ignore
+  const isPlay = useSelector((state) => state.mode.isPlay);
+  const url = name
+    .replace(/[{()}]/g, '')
+    .replace(/ /g, '-')
+    .toLowerCase();
+
   return (
-    <NavLink to={`/${name}`}>
-      <Card
-        sx={{
-          maxWidth: 340,
-          width: '100%',
-          height: '100%',
-        }}
-      >
-        <CardMedia component="img" height="140" image={`${image}`} alt={name} />
+    <NavLink to={`/${url}`} style={{ textDecoration: 'none' }}>
+      <Card sx={isPlay ? { backgroundColor: '#17cd75b5' } : { backgroundColor: 'red' }}>
+        <CardMedia component="img" sx={{ maxHeight: '200px' }} image={`${image}`} alt={name} />
         <CardContent
           sx={{
             padding: '8px',

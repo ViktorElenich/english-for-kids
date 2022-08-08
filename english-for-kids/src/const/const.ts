@@ -19,3 +19,6 @@ export const captions = [
     'Clothes',
     'Emotions',
 ];
+
+export const CHANGE_MODE = 'CHANGE_MODE';
+export const ROTATE_TRAIN_CARD = 'ROTATE_TRAIN_CARD';

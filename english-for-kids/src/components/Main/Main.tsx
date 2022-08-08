@@ -16,7 +16,7 @@ const Main: FC = () => {
       component="main"
       sx={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
+        gridTemplateColumns: 'repeat(auto-fit,minmax(270px, 1fr))',
         gap: '15px',
         float: 'right',
         width: '100%',
