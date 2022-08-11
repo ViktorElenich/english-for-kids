@@ -1,5 +1,6 @@
 export enum RouteEnum {
-  Main = '/',
+  Home = '',
+  Main = '/main',
   Categories = '/categories',
   Action1 = '/action-set-a',
   Action2 = '/action-set-b',

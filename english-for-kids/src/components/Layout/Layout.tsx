@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Box from '@mui/material/Box';
 import SideBar from '../SideBar/SideBar';
-import Main from '../Main/Main';
+import CardsContainer from "../CardsContainer/CardsContainer";
 
 const Layout: FC = () => {
   return (
@@ -14,7 +14,7 @@ const Layout: FC = () => {
       }}
     >
       <SideBar />
-      <Main />
+      <CardsContainer />
     </Box>
   )
 }

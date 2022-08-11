@@ -5,6 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { RouteEnum } from '../../../enums/enums';
 
 interface Props {
   image: string;
@@ -21,9 +22,9 @@ const MainCards: FC<Props> = ({ image, name }) => {
     .toLowerCase();
 
   return (
-    <NavLink to={`/${url}`} style={{ textDecoration: 'none' }}>
+    <NavLink to={`${RouteEnum.Categories}/${url}`} style={{ textDecoration: 'none' }}>
       <Card sx={isPlay ? { backgroundColor: '#17cd75b5' } : { backgroundColor: '#c74e4ebf' }}>
-        <CardMedia component="img" sx={{ maxHeight: '200px' }} image={`${image}`} alt={name} />
+        <CardMedia component="img" sx={{ maxHeight: '200px' }} image={`../${image}`} alt={name} />
         <CardContent
           sx={{
             padding: '8px',

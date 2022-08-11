@@ -17,6 +17,7 @@ import './SideBar.scss';
 import { navigationLinks } from '../../const/const';
 import { useDispatch } from 'react-redux';
 import { changeMode } from '../../store/switchMode';
+import { RouteEnum } from '../../enums/enums';
 
 const styles = {
   bg: 'linear-gradient(111.84deg, rgb(188 209 20 / 58%) 59.3%, rgba(26, 31, 55, 0) 100%)',
@@ -47,7 +48,13 @@ const SideBar: FC<Props> = ({ window }) => {
     <Box>
       <List>
         {navigationLinks.map((item, index) => (
-          <Link key={index} href={item.href} variant="button" underline="none" color="#fff">
+          <Link
+            key={index}
+            href={`${RouteEnum.Categories}${item.href}`}
+            variant="button"
+            underline="none"
+            color="#fff"
+          >
             <ListItem>
               <Button
                 sx={{
@@ -99,9 +106,11 @@ const SideBar: FC<Props> = ({ window }) => {
           <Typography variant="h6" noWrap component="div" sx={{ pl: '10px' }}>
             English For Kids
           </Typography>
-          <Toolbar sx={{
-              justifyContent: 'flex-end'
-          }}>
+          <Toolbar
+            sx={{
+              justifyContent: 'flex-end',
+            }}
+          >
             <Typography component="div" sx={{ color: '#fff' }}>
               {switchInput ? 'Train' : 'Play'}
             </Typography>
