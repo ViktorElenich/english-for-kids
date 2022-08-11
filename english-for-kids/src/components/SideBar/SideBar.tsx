@@ -14,12 +14,12 @@ import Drawer from '@mui/material/Drawer';
 import Link from '@mui/material/Link';
 import Switch from '@mui/material/Switch';
 import './SideBar.scss';
-import {  navigationLinks } from "../../const/const";
-
-
+import { navigationLinks } from '../../const/const';
+import { useDispatch } from 'react-redux';
+import { changeMode } from '../../store/switchMode';
 
 const styles = {
-  bg: 'linear-gradient(111.84deg, rgba(6, 11, 38, 0.94) 59.3%, rgba(26, 31, 55, 0) 100%)',
+  bg: 'linear-gradient(111.84deg, rgb(188 209 20 / 58%) 59.3%, rgba(26, 31, 55, 0) 100%)',
 };
 
 const drawerWidth = 240;
@@ -32,6 +32,7 @@ const SideBar: FC<Props> = ({ window }) => {
   const [open, setOpen] = useState(false);
   const [switchInput, setSwitchInput] = useState(true);
   const container = window !== undefined ? () => window().document.body : undefined;
+  const dispatch = useDispatch();
 
   const handleOpenSideBar = () => {
     setOpen(!open);
@@ -39,27 +40,23 @@ const SideBar: FC<Props> = ({ window }) => {
 
   const handleSwitchInput = () => {
     setSwitchInput(!switchInput);
+    dispatch(changeMode());
   };
 
   const drawer = (
     <Box>
-
       <List>
         {navigationLinks.map((item, index) => (
-          <Link
-              key={index}
-              href={item.href}
-              variant="button"
-              underline="none"
-              color="#fff"
-          >
+          <Link key={index} href={item.href} variant="button" underline="none" color="#fff">
             <ListItem>
               <Button
                 sx={{
-                  background: '#1A1F37',
+                  background: '#d3911a',
                   textAlign: 'center',
                   borderRadius: 5,
                   width: '100%',
+                  color: 'white',
+                  border: '1px solid rgb(108, 75, 16, 0.5)',
                 }}
                 variant="outlined"
               >
@@ -84,10 +81,12 @@ const SideBar: FC<Props> = ({ window }) => {
           boxShadow: 0,
         }}
       >
-        <Toolbar sx={{
+        <Toolbar
+          sx={{
             display: 'flex',
-            justifyContent: 'space-between'
-        }}>
+            justifyContent: 'space-between',
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -100,12 +99,14 @@ const SideBar: FC<Props> = ({ window }) => {
           <Typography variant="h6" noWrap component="div" sx={{ pl: '10px' }}>
             English For Kids
           </Typography>
-            <Toolbar sx={{ justifyContent: 'flex-end' }}>
-                <Typography component="div" sx={{ color: '#fff' }}>
-                    {switchInput ? 'Train' : 'Play'}
-                </Typography>
-                <Switch color="primary" checked={switchInput} onChange={handleSwitchInput} />
-            </Toolbar>
+          <Toolbar sx={{
+              justifyContent: 'flex-end'
+          }}>
+            <Typography component="div" sx={{ color: '#fff' }}>
+              {switchInput ? 'Train' : 'Play'}
+            </Typography>
+            <Switch color="success" checked={switchInput} onChange={handleSwitchInput} />
+          </Toolbar>
         </Toolbar>
       </AppBar>
       <Box

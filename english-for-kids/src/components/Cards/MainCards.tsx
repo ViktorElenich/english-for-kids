@@ -22,7 +22,7 @@ const MainCards: FC<Props> = ({ image, name }) => {
 
   return (
     <NavLink to={`/${url}`} style={{ textDecoration: 'none' }}>
-      <Card sx={isPlay ? { backgroundColor: '#17cd75b5' } : { backgroundColor: 'red' }}>
+      <Card sx={isPlay ? { backgroundColor: '#17cd75b5' } : { backgroundColor: '#c74e4ebf' }}>
         <CardMedia component="img" sx={{ maxHeight: '200px' }} image={`${image}`} alt={name} />
         <CardContent
           sx={{

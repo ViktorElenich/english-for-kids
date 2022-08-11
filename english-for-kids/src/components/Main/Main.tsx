@@ -3,14 +3,14 @@ import Container from '@mui/material/Container';
 import './Main.scss';
 import MainCards from '../Cards/MainCards';
 import data from '../../cards.json';
-import {captions} from "../../const/const";
+import { captions } from '../../const/const';
 
 const Main: FC = () => {
-    const cardContent = [];
-    for (let key in data){
-        // @ts-ignore
-        cardContent.push(data[key]);
-    }
+  const cardContent = [];
+  for (let key in data) {
+    // @ts-ignore
+    cardContent.push(data[key]);
+  }
   return (
     <Container
       component="main"
@@ -30,11 +30,9 @@ const Main: FC = () => {
         },
       }}
     >
-        {cardContent.map((card, index) => {
-            return (
-                <MainCards image={card[0].image} name={captions[index]} key={index} />
-            )
-        })}
+      {cardContent.map((card, index) => {
+        return <MainCards image={card[0].image} name={captions[index]} key={index} />;
+      })}
     </Container>
   );
 };
