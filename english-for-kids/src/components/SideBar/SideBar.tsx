@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { NavLink } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,7 +12,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Drawer from '@mui/material/Drawer';
-import Link from '@mui/material/Link';
 import './SideBar.scss';
 import { navigationLinks } from '../../const/const';
 import { RouteEnum } from '../../enums/enums';
@@ -38,12 +38,10 @@ const SideBar: FC<Props> = ({ window }) => {
     <Box>
       <List>
         {navigationLinks.map((item, index) => (
-          <Link
+          <NavLink
+            className={'navItem'}
             key={index}
-            href={`${RouteEnum.Categories}${item.href}`}
-            variant="button"
-            underline="none"
-            color="#fff"
+            to={`${RouteEnum.Categories}${item.href}`}
           >
             <ListItem>
               <Button
@@ -60,7 +58,7 @@ const SideBar: FC<Props> = ({ window }) => {
                 <ListItemText primary={item.name} />
               </Button>
             </ListItem>
-          </Link>
+          </NavLink>
         ))}
       </List>
     </Box>

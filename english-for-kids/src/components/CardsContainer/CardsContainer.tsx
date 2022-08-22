@@ -1,16 +1,19 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
+import { NavLink } from "react-router-dom";
+import { Box, CardMedia, Container, Button } from '@mui/material';
+import ForwardIcon from '@mui/icons-material/Forward';
 import { setMistakes } from '../../redux/actions/actions';
 import { Nullable, RouteParams } from '../../types/types';
 import { ICard } from '../../interface';
 import cardsData from '../../assets/JSON/cards.json';
 import { countingStatistics } from '../../utils/utils';
-import { StatisticsCategory } from '../../enums/enums';
+import {RouteEnum, StatisticsCategory} from '../../enums/enums';
 import CardWord from './Card/Card';
 import ButtonPlay from '../../common/Button/Button';
-import { Box, CardMedia, Container } from '@mui/material';
 import SwitchButton from '../../common/Switch/Switch';
+import './CardsContainer.scss';
 
 const starWin = '../icons/starWin.svg';
 const starEmpty = '../icons/star.svg';
@@ -134,9 +137,25 @@ const CardsContainer: FC = () => {
         sx={{
           display: 'flex',
           justifyContent: 'center',
+          marginTop: '10px'
         }}
       >
-        <SwitchButton checked={gameMode} onChange={handleSwitchInput} />
+        <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          maxWidth: '250px',
+          width: '100%',
+        }}
+        >
+          <NavLink
+            to={RouteEnum.Categories}
+            className={'navBack'}
+          >
+            <ForwardIcon sx={{ transform: 'rotate(180deg)'}} />
+            Back</NavLink>
+          <SwitchButton checked={gameMode} onChange={handleSwitchInput} />
+        </Box>
       </Box>
       <Box
         sx={{

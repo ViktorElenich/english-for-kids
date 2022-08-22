@@ -21,10 +21,15 @@ const CardsCategories: FC<Props> = ({ categoriesData }) => {
 
   return (
     <NavLink to={`${RouteEnum.Categories}/${link}`} style={{ textDecoration: 'none' }}>
-      <Card>
+      <Card
+        sx={{
+          background: 'transparent',
+          boxShadow: '0px 0px 0px 0px'
+        }}
+      >
         <CardMedia
           component="img"
-          sx={{ maxHeight: '200px' }}
+          sx={{ maxHeight: '200px', borderRadius: '50%'}}
           image={`../${image}`}
           alt={category}
         />
