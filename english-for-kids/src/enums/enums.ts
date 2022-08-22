@@ -1,12 +1,26 @@
 export enum RouteEnum {
   Home = '',
-  Main = '/main',
+  Main = '/',
   Categories = '/categories',
-  Action1 = '/action-set-a',
-  Action2 = '/action-set-b',
-  Animals1 = '/animal-set-a',
-  Animals2 = '/animal-set-b',
+  Action1 = '/action-a',
+  Action2 = '/action-b',
+  Action3 = '/action-c',
+  Adjective = '/adjective',
   Clothes = '/clothes',
-  Emotions = '/emotions',
-  Places = '/places'
+  Emotions = '/emotion',
+  Animal1 = '/animal-a',
+  Animal2 = '/animal-b',
+  Statistics = '/statistics',
+}
+
+export enum StatisticsCategory {
+  Clicks = 'clicks',
+  Correct = 'correct',
+  Wrong = 'wrong',
+}
+
+export enum ActionType {
+  SetGameMode = 'SetGameMode',
+  SetRepeat = 'SetRepeat',
+  SetMistakes = 'SetMistakes',
 }

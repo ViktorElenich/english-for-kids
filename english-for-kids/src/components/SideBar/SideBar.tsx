@@ -12,11 +12,8 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Drawer from '@mui/material/Drawer';
 import Link from '@mui/material/Link';
-import Switch from '@mui/material/Switch';
 import './SideBar.scss';
 import { navigationLinks } from '../../const/const';
-import { useDispatch } from 'react-redux';
-import { changeMode } from '../../store/switchMode';
 import { RouteEnum } from '../../enums/enums';
 
 const styles = {
@@ -31,17 +28,10 @@ interface Props {
 
 const SideBar: FC<Props> = ({ window }) => {
   const [open, setOpen] = useState(false);
-  const [switchInput, setSwitchInput] = useState(true);
   const container = window !== undefined ? () => window().document.body : undefined;
-  const dispatch = useDispatch();
 
   const handleOpenSideBar = () => {
     setOpen(!open);
-  };
-
-  const handleSwitchInput = () => {
-    setSwitchInput(!switchInput);
-    dispatch(changeMode());
   };
 
   const drawer = (
@@ -110,12 +100,7 @@ const SideBar: FC<Props> = ({ window }) => {
             sx={{
               justifyContent: 'flex-end',
             }}
-          >
-            <Typography component="div" sx={{ color: '#fff' }}>
-              {switchInput ? 'Train' : 'Play'}
-            </Typography>
-            <Switch color="success" checked={switchInput} onChange={handleSwitchInput} />
-          </Toolbar>
+          ></Toolbar>
         </Toolbar>
       </AppBar>
       <Box

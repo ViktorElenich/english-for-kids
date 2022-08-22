@@ -1,40 +1,37 @@
-import React, { FC, Suspense } from 'react';
+import React, { FC, Suspense, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.scss';
-import CardsContainer from './components/CardsContainer/CardsContainer';
-import Main from './components/Main/Main';
+import Categories from './components/Categories/Categories';
 import Preloader from './components/Preloader/Preloader';
 import { RouteEnum } from './enums/enums';
 import HomePage from './pages/HomePage';
-
-const LayoutPage = React.lazy(() => import('./components/Layout/Layout'));
+import Layout from './components/Layout/Layout';
+import Statistics from './components/Statistics/Statistics';
+import './App.scss';
+import CardsContainer from './components/CardsContainer/CardsContainer';
+import { setLocalStorage } from './utils/utils';
 
 const App: FC = () => {
+  useEffect(() => {
+    if (!localStorage.getItem('cards')) {
+      setLocalStorage();
+    }
+  }, []);
+
   return (
     <BrowserRouter>
-      <Suspense fallback={<Preloader />}>
-        <Routes>
-          <Route path={RouteEnum.Home} element={<HomePage />} />
-          <Route
-            path={`${RouteEnum.Categories}${RouteEnum.Main}`}
-            element={
-              <Suspense fallback={<Preloader />}>
-                <Main />
-              </Suspense>
-            }
-          />
-          <Route
-            path={RouteEnum.Categories}
-            element={
-              <Suspense fallback={<Preloader />}>
-                <LayoutPage />
-              </Suspense>
-            }
-          >
-            <Route path=":categoryId" element={<CardsContainer />} />
-          </Route>
-        </Routes>
-      </Suspense>
+      <Routes>
+        <Route path={RouteEnum.Home} element={<HomePage />} />
+        <Route
+          path={RouteEnum.Categories}
+          element={
+            <Layout>
+              <Categories />
+            </Layout>
+          }
+        />
+        <Route path={`${RouteEnum.Categories}/:categoryName`} element={<CardsContainer />} />
+        <Route path={RouteEnum.Statistics} element={<Statistics />} />
+      </Routes>
     </BrowserRouter>
   );
 };

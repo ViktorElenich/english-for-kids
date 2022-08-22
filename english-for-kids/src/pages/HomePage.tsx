@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Container } from '@mui/material';
+import { RouteEnum } from '../enums/enums';
 
 const HomePage = () => {
   return (
@@ -18,7 +19,7 @@ const HomePage = () => {
       }}
     >
       <Button
-        href="/main"
+        href={RouteEnum.Categories}
         variant="contained"
         size="large"
         sx={{
