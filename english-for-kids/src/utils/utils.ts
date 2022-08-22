@@ -1,6 +1,7 @@
 import cardsData from '../assets/JSON/cards.json';
 import { StatisticsCategory } from '../enums/enums';
 import { StatisticsItem } from '../interface';
+import { DEFAULT_ACTIVE_ROW } from '../const/const';
 
 export const countingStatistics = (word: string, category: StatisticsCategory) => {
   const data = JSON.parse(localStorage.getItem('cards') || '[]');
@@ -57,4 +58,50 @@ export const setLocalStorage = () => {
   });
 
   localStorage.setItem('cards', JSON.stringify(statistics));
+  localStorage.setItem('activeRow', JSON.stringify(DEFAULT_ACTIVE_ROW));
+};
+
+export const formingListWords = () => {
+  const cards: StatisticsItem[] = JSON.parse(localStorage.getItem('cards') || '[]');
+
+  cards.sort((a, b) => (a.wrong > b.wrong ? -1 : 1));
+
+  const array = [];
+  for (let i = 0; i < 8; i += 1) {
+    if (cards[i].wrong > 0) array.push(cards[i]);
+  }
+
+  localStorage.setItem('difficult-words', JSON.stringify(array));
+};
+
+const capitalize = (string: string) => string[0].toUpperCase() + string.slice(1);
+
+export const sortTable = (
+  data: StatisticsItem[],
+  field: string,
+  direction: boolean,
+): StatisticsItem[] => {
+  const newData: StatisticsItem[] = JSON.parse(JSON.stringify(data));
+
+  if (direction) {
+    newData.sort((a, b) =>
+      a[field as keyof StatisticsItem] >= b[field as keyof StatisticsItem]
+        ? 1
+        : -1,
+    );
+  } else {
+    newData.sort((a, b) =>
+      a[field as keyof StatisticsItem] >= b[field as keyof StatisticsItem]
+        ? -1
+        : 1,
+    );
+  }
+
+  localStorage.setItem('cards', JSON.stringify(newData));
+  localStorage.setItem(
+    'activeRow',
+    JSON.stringify({ title: capitalize(field), direction }),
+  );
+
+  return newData;
 };

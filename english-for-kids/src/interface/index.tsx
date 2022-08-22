@@ -25,3 +25,12 @@ export interface ReducerState {
   stateRepeat: boolean;
   mistakes: number;
 }
+export interface ActiveRow {
+  title: string;
+  direction: boolean;
+}
+
+export interface TableData {
+  activeRow: ActiveRow;
+  cards: StatisticsItem[];
+}

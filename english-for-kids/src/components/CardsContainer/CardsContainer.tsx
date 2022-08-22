@@ -13,6 +13,7 @@ import {RouteEnum, StatisticsCategory} from '../../enums/enums';
 import CardWord from './Card/Card';
 import ButtonPlay from '../../common/Button/Button';
 import SwitchButton from '../../common/Switch/Switch';
+import ButtonBack from "../../common/Button/ButtonBack";
 import './CardsContainer.scss';
 
 const starWin = '../icons/starWin.svg';
@@ -148,12 +149,7 @@ const CardsContainer: FC = () => {
           width: '100%',
         }}
         >
-          <NavLink
-            to={RouteEnum.Categories}
-            className={'navBack'}
-          >
-            <ForwardIcon sx={{ transform: 'rotate(180deg)'}} />
-            Back</NavLink>
+          <ButtonBack />
           <SwitchButton checked={gameMode} onChange={handleSwitchInput} />
         </Box>
       </Box>

@@ -12,3 +12,8 @@ export const navigationLinks = [
   { name: 'Animal (set B)', href: RouteEnum.Animal2 },
   { name: 'Statistics', href: RouteEnum.Statistics },
 ];
+
+export const DEFAULT_ACTIVE_ROW = {
+  title: 'Word',
+  direction: true,
+};

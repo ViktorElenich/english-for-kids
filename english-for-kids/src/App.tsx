@@ -30,7 +30,7 @@ const App: FC = () => {
           }
         />
         <Route path={`${RouteEnum.Categories}/:categoryName`} element={<CardsContainer />} />
-        <Route path={RouteEnum.Statistics} element={<Statistics />} />
+        <Route path={`${RouteEnum.Categories}${RouteEnum.Statistics}`} element={<Statistics />} />
       </Routes>
     </BrowserRouter>
   );
