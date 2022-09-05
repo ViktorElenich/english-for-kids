@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Categories from './components/Categories/Categories';
 import Preloader from './components/Preloader/Preloader';
 import { RouteEnum } from './enums/enums';
-import HomePage from './pages/HomePage';
+import HomePage from './pages/HomePage/HomePage';
 import Layout from './components/Layout/Layout';
 import Statistics from './components/Statistics/Statistics';
 import './App.scss';

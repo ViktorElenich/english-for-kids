@@ -24,12 +24,19 @@ const CardsCategories: FC<Props> = ({ categoriesData }) => {
       <Card
         sx={{
           background: 'transparent',
-          boxShadow: '0px 0px 0px 0px'
+          boxShadow: '0px 0px 0px 0px',
         }}
       >
         <CardMedia
           component="img"
-          sx={{ maxHeight: '200px', borderRadius: '50%'}}
+          sx={{
+              maxHeight: '200px',
+              borderRadius: '15px',
+              transition: 'all 0.4s',
+              '&:hover': {
+                  transform: 'scale(1.1)',
+              }
+          }}
           image={`../${image}`}
           alt={category}
         />
@@ -42,6 +49,9 @@ const CardsCategories: FC<Props> = ({ categoriesData }) => {
             sx={{
               textAlign: 'center',
               margin: 0,
+              fontFamily: 'Irish Grover, cursive',
+              textTransform: 'uppercase',
+              color: '#C43302'
             }}
             gutterBottom
             variant="h5"

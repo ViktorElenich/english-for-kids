@@ -1,19 +1,17 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
-import { NavLink } from "react-router-dom";
-import { Box, CardMedia, Container, Button } from '@mui/material';
-import ForwardIcon from '@mui/icons-material/Forward';
-import { setMistakes } from '../../redux/actions/actions';
+import { setMistakes } from '../../redux/slices/categoriesSlice';
 import { Nullable, RouteParams } from '../../types/types';
 import { ICard } from '../../interface';
 import cardsData from '../../assets/JSON/cards.json';
 import { countingStatistics } from '../../utils/utils';
-import {RouteEnum, StatisticsCategory} from '../../enums/enums';
+import { StatisticsCategory } from '../../enums/enums';
 import CardWord from './Card/Card';
 import ButtonPlay from '../../common/Button/Button';
 import SwitchButton from '../../common/Switch/Switch';
-import ButtonBack from "../../common/Button/ButtonBack";
+import ButtonBack from '../../common/Button/ButtonBack';
+import { Box, CardMedia, Container, Button } from '@mui/material';
 import './CardsContainer.scss';
 
 const starWin = '../icons/starWin.svg';
@@ -138,16 +136,16 @@ const CardsContainer: FC = () => {
         sx={{
           display: 'flex',
           justifyContent: 'center',
-          marginTop: '10px'
+          marginTop: '10px',
         }}
       >
         <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          maxWidth: '250px',
-          width: '100%',
-        }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            maxWidth: '250px',
+            width: '100%',
+          }}
         >
           <ButtonBack />
           <SwitchButton checked={gameMode} onChange={handleSwitchInput} />

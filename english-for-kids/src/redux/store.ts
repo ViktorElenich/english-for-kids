@@ -1,10 +1,10 @@
-import { combineReducers, createStore } from 'redux';
-import { reducer } from './reducers/categoriesReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import categoriesReducer from './slices/categoriesSlice';
 
-export const reducers = combineReducers({
-  reducer,
+export const store = configureStore({
+  reducer: {
+    categories: categoriesReducer,
+  },
 });
-
-export const store = createStore(reducers);
 
 export type RootState = ReturnType<typeof store.getState>;

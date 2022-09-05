@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import { Container } from '@mui/material';
-import { RouteEnum } from '../enums/enums';
+import { RouteEnum } from '../../enums/enums';
 import './HomePage.scss';
 
 const HomePage = () => {
