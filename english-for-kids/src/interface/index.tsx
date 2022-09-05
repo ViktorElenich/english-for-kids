@@ -21,8 +21,6 @@ export interface ICard {
 }
 
 export interface ReducerState {
-  stateGameMode: boolean;
-  stateRepeat: boolean;
   mistakes: number;
 }
 export interface ActiveRow {

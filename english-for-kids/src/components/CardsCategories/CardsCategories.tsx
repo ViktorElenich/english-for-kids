@@ -25,6 +25,7 @@ const CardsCategories: FC<Props> = ({ categoriesData }) => {
         sx={{
           background: 'transparent',
           boxShadow: '0px 0px 0px 0px',
+          borderRadius: '15px',
         }}
       >
         <CardMedia

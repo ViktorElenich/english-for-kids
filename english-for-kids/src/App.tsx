@@ -1,7 +1,6 @@
-import React, { FC, Suspense, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Categories from './components/Categories/Categories';
-import Preloader from './components/Preloader/Preloader';
 import { RouteEnum } from './enums/enums';
 import HomePage from './pages/HomePage/HomePage';
 import Layout from './components/Layout/Layout';
@@ -9,6 +8,7 @@ import Statistics from './components/Statistics/Statistics';
 import './App.scss';
 import CardsContainer from './components/CardsContainer/CardsContainer';
 import { setLocalStorage } from './utils/utils';
+import FinalPage from './pages/FinalPage/FinalPage';
 
 const App: FC = () => {
   useEffect(() => {
@@ -31,6 +31,7 @@ const App: FC = () => {
         />
         <Route path={`${RouteEnum.Categories}/:categoryName`} element={<CardsContainer />} />
         <Route path={`${RouteEnum.Categories}${RouteEnum.Statistics}`} element={<Statistics />} />
+        <Route path={`${RouteEnum.FinalPage}`} element={<FinalPage />} />
       </Routes>
     </BrowserRouter>
   );

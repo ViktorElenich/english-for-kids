@@ -17,6 +17,8 @@ import {
   TableRow,
 } from '@mui/material';
 import ButtonBack from "../../common/Button/ButtonBack";
+import {NavLink} from "react-router-dom";
+import { RouteEnum } from '../../enums/enums';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -95,10 +97,13 @@ export const Statistics: FC = () => {
       >
         <Box
           sx={{
-            marginBottom: '10px'
+            marginBottom: '10px',
+            display: 'flex',
+            gap: '15px',
           }}
         >
-          <ButtonBack />
+          <ButtonBack text={"Back"} />
+          <NavLink className={'navBack'} to={`${RouteEnum.Categories}/repeat-difficult-words`}>Repeat difficult words</NavLink>
         </Box>
         <TableContainer
           sx={{

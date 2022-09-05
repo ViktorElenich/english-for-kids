@@ -11,7 +11,7 @@ import CardWord from './Card/Card';
 import ButtonPlay from '../../common/Button/Button';
 import SwitchButton from '../../common/Switch/Switch';
 import ButtonBack from '../../common/Button/ButtonBack';
-import { Box, CardMedia, Container, Button } from '@mui/material';
+import { Box, CardMedia, Container } from '@mui/material';
 import './CardsContainer.scss';
 
 const starWin = '../icons/starWin.svg';
@@ -147,7 +147,7 @@ const CardsContainer: FC = () => {
             width: '100%',
           }}
         >
-          <ButtonBack />
+          <ButtonBack text={'Back'} />
           <SwitchButton checked={gameMode} onChange={handleSwitchInput} />
         </Box>
       </Box>

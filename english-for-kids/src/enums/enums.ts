@@ -11,16 +11,11 @@ export enum RouteEnum {
   Animal1 = '/animal-a',
   Animal2 = '/animal-b',
   Statistics = '/statistics',
+  FinalPage = '/final-page'
 }
 
 export enum StatisticsCategory {
   Clicks = 'clicks',
   Correct = 'correct',
   Wrong = 'wrong',
-}
-
-export enum ActionType {
-  SetGameMode = 'SetGameMode',
-  SetRepeat = 'SetRepeat',
-  SetMistakes = 'SetMistakes',
 }

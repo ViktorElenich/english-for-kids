@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -38,11 +38,7 @@ const SideBar: FC<Props> = ({ window }) => {
     <Box>
       <List>
         {navigationLinks.map((item, index) => (
-          <NavLink
-            className={'navItem'}
-            key={index}
-            to={`${RouteEnum.Categories}${item.href}`}
-          >
+          <NavLink className={'navItem'} key={index} to={`${RouteEnum.Categories}${item.href}`}>
             <ListItem>
               <Button
                 sx={{
@@ -74,6 +70,10 @@ const SideBar: FC<Props> = ({ window }) => {
           ml: { sm: `${drawerWidth}px` },
           background: 'transparent',
           boxShadow: 0,
+          '@media (max-width: 600px)': {
+            transition: 'box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+            boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px',
+          }
         }}
       >
         <Toolbar
@@ -91,7 +91,22 @@ const SideBar: FC<Props> = ({ window }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ pl: '10px' }}>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{
+              pl: '10px',
+              fontFamily: 'Irish Grover, cursive',
+              textTransform: 'uppercase',
+              letterSpacing: '2px',
+              fontSize: '2.5em',
+              '@media (max-width: 768px)': {
+                fontSize: '1.6em'
+              },'@media (max-width: 380px)': {
+                fontSize: '1.2em'
+              },
+            }}>
             English For Kids
           </Typography>
           <Toolbar
