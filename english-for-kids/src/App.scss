@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.layout {
+  background-image: url(../static/background-body-admin.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100%;
+  position: relative;
+}
